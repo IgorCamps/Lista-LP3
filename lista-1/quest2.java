@@ -10,14 +10,12 @@ public class quest2{
     Random rDado2 = new Random();
       
     dado1 = 1 + rDado1.nextInt(6);
-    dado2 =1 + rDado2.nextInt(6);
+    dado2 = 1 + rDado2.nextInt(6);
 
     somaD = dado1 + dado2;
 
     System.out.println("Dado 1: " + dado1 + " Dado2: " + dado2 + "\nPonto: " + somaD);
     
-    
-
     if(somaD == 7 || somaD == 11){
       System.out.println("Parabéns, você ganhou!");
       lancamento = 1;
