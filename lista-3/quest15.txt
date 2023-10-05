@@ -1,0 +1,61 @@
+modelo Data
+início do modelo
+    dado dia,mês,ano;
+
+    operação inicializaData(umDia,umMês,umAno)    
+        início
+            se DataVálida(umDia,umMês,umAno)
+                início
+                    dia = umDia;
+                    mês = umMês;
+                    ano = umAno;
+                fim
+            senão
+                início
+                    dia = 0;
+                    mês = 0;
+                    ano = 0;      
+                fim
+        fim
+
+    operação DataVálida(umDia, umMês, umAno)
+        início
+            se ((dia >= 1) e (dia <= 31) e (umMês >= 1) e (umMês <= 12))
+                início
+                    se (umMês == 2)
+                        início
+                            se ( ((umAno % 4 == 0) e (umAno % 100 != 0)) ou (umAno % 400 == 0) )
+                                se (umDia >= 1 e umDia <= 29)
+                                    retorna verdadeiro;
+                                senão
+                                    retorna falso;
+                            senão
+                                se (umDia >= 1 e umDia <= 28)
+                                    retorna verdadeiro;
+                                senão
+                                    retorna falso;
+                        fim
+                    senão se ((umMês == 4 or umMês == 6 or umMês == 9 or umMês == 11))
+                        se (umDia >= 1 e umDia <= 30)
+                            retorna verdadeiro;
+                        senão
+                            retorna falso;
+                    senão se (umDia >= 1 and umDia <= 31)
+                        retorna verdadeiro;
+                    senão
+                        retorna falso;
+                fim
+            senão
+                retorna falso;
+        fim
+
+    operação mostraData()
+        início
+            imprime dia;
+            imprime "/";
+            imprime mês;
+            imprime "/";
+            imprime ano;
+        fim
+
+fim do modelo   

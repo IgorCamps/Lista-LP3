@@ -1,0 +1,97 @@
+modelo Data
+início do modelo
+    dado dia,mês,ano,diaSemana;
+
+    operação inicializaData(umDia,umMês,umAno)
+        início
+            se éDataVálida(umDia,umMês,umAno)
+                início
+                    dia = umDia;
+                    mês = umMês;
+                    ano = umAno;
+                    calcularDiaSemana();
+                fim
+            senão
+                início
+                    dia = 0;
+                    mês = 0;
+                    ano = 0;  
+                    diaSemana = "Data inválida";    
+                fim
+        fim
+
+    operação éDataVálida(umDia,umMês,umAno)
+        início
+            se (umMês >= 1 e umMês <= 12)
+                início
+                    se (umMês == 2)
+                        se (((umAno % 4 == 0) e (umAno % 100 != 0)) ou (umAno % 400 == 0))
+                            se (umDia >= 1 e umDia <= 29)
+                                retorna verdadeiro;
+                            senão
+                                retorna falso;
+                        senão
+                            se (umDia >= 1 e umDia <= 28)
+                                retorna verdadeiro;
+                            senão
+                                retorna falso;
+                    senão se ((umMês == 4 or umMês == 6 or umMês == 9 or umMês == 11))
+                        se (umDia >= 1 e umDia <= 30)
+                            retorna verdadeiro;
+                        senão
+                            retorna falso;
+                    senão se (umDia >= 1 and umDia <= 31)
+                        retorna verdadeiro;
+                    senão
+                        retorna falso;
+                fim
+            senão
+                retorna falso;
+        fim
+
+    operação mostraData()
+        início
+            imprime dia;
+            imprime "/";
+            imprime mês;
+            imprime "/";
+            imprime ano;
+        fim    
+
+    operação calcularDiaSemana()
+        início
+            inteiro D, M, A;
+            
+            D = dia;
+            M = mês;
+            A = ano;
+
+            se (M < 3)
+                A = A - 1;
+                M = M + 12;
+            
+            inteiro X = A % 100;
+            inteiro Y = A / 100;
+
+            diaSemana = (D + 13 * (M + 1) / 5 + X + X / 4 + Y / 4 - 2 * Y) % 7;
+
+            escolha (diaSemana)
+                caso 0
+                    diaSemana = "Domingo";
+                caso 1
+                    diaSemana = "Segunda-feira";
+                caso 2
+                    diaSemana = "Terça-feira";
+                caso 3
+                    diaSemana = "Quarta-feira";
+                caso 4
+                    diaSemana = "Quinta-feira";
+                caso 5
+                    diaSemana = "Sexta-feira";
+                caso 6
+                    diaSemana = "Sábado";
+                caso contrário
+                    diaSemana = "Erro";
+        fim
+
+fim do modelo
