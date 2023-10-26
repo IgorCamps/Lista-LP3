@@ -1,6 +1,5 @@
 import java.util.Scanner;
 
-
 public class LampadaGeneralizada {
 
     private String estadoDaLampada; // Variável para armazenar o estado da lâmpada
