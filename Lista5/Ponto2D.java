@@ -6,7 +6,7 @@ public class Ponto2D {
     private double x, y;
     private boolean imutavel = false;
 
-    Ponto2D(double x, double y) {
+    public Ponto2D(double x, double y) {
         this.x = x;
         this.y = y;
         this.imutavel = true;
